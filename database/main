@@ -1,0 +1,29 @@
+CREATE TABLE users(
+	user_id SERIAL PRIMARY KEY,
+    user_name VARCHAR (50) UNIQUE NOT NULL,
+    password VARCHAR (50) NOT NULL,
+    admin BOOL NOT NULL,
+    img_name TEXT, f_name CHAR (50) NOT NULL,
+    s_name CHAR (50) NOT NULL,
+    age INT,
+    email VARCHAR (50) NOT NULL, 
+    bio VARCHAR (50), post_no INT DEFAULT 0, donation INT DEFAULT 0 
+)
+
+CREATE TABLE posts(
+	post_id SERIAL PRIMARY KEY, 
+    user_id INT NOT NULL,
+    heading VARCHAR (50) NOT NULL,
+    content VARCHAR (600),
+    img_name TEXT,  post_time TIMESTAMP NOT NULL
+)
+
+INSERT INTO users (user_name,password,admin,f_name,s_name,email) values ('admin1','test123',true,'Admin','Test1','random@xyz.com');
+INSERT INTO users (user_name,password,admin,f_name,s_name,email) values ('admin2','test345',true,'Admin','Test2','random@abc.com');
+CREATE TABLE payments (
+	pay_id SERIAL PRIMARY KEY,
+    txn_id INT NOT NULL UNIQUE,
+    user_id INT NOT NULL UNIQUE,
+    amount INT NOT NULL UNIQUE,
+    payment_status BOOL NOT NULL
+)
